@@ -140,35 +140,36 @@
 
        <div class="col-xs-12 col-sm-12 col-md-12 wow bounceIn animated headding" data-wow-delay=".5s">
            <h2>API <span>Endpoints</span></h2>
-           <p>All functions within the JS port of the library are called through a defined “Algo” object. This allows for single-file instantiation and readability of commands. The commands that can be called are divided into two families- Algo.Vector, which encompasses all functions that create and manipulate the target vector to be sorted- and Algo.Sort, which encompasses the previously mentioned sorting algorithms -Bubble, Merge, and Insertion.</p>
+           <p>All functions within the JS port of the library are called through a defined “Algo” object. This allows for single-file instantiation and readability of commands. The commands that can be called are divided into two families- Algo.Vector, which encompasses all functions that create and manipulate the target vector to be sorted- and Algo.Sort, which encompasses the previously mentioned sorting algorithms - Bubble, Merge, and Insertion.</p>
+	   <p> There are three different modes of use for this library: Single-threaded, in which the program works and sorts as one collective unit; Multi-threaded, in which the calling program spins off a number of threads to divide the work between; and Networked, in which the calling program communicates between a central server and a number of clients to divide the work of sorting a vector. You can view the API for any of them by clicking the appropriate button next to each mode.</p>
        </div>
 
       <div class="col-xs-12 col-sm-4 col-md-4">
          <div class="row">     
           <div class="col-xs-10 col-sm-10 col-md-10 wow fadeInLeft animated textright" data-wow-delay=".5s">
-            <h3>Lorem ipsum</h3>
-              <p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum.</p>     
+            <h3>Single-Threaded API</h3>
+              <p>Communication between the program and itself.</p>     
           </div>
             <div class="col-xs-2 col-sm-2 col-md-2 wow fadeInRight animated" data-wow-delay=".5s">
-                <i class="fa fa-apple iconfont"></i>
+                <i class="fa fa-horizontal-rule iconfont"></i>
           </div>    
         </div>
         <div class="row"> 
          <div class="col-xs-10 col-sm-10 col-md-10 wow fadeInLeft animated textright" data-wow-delay=".6s">
-            <h3>Lorem ipsum</h3>
-              <p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum.</p>     
+            <h3>Multi-Threaded API</h3>
+              <p>Communication between the program and a number of worker threads.</p>     
           </div>
             <div class="col-xs-2 col-sm-2 col-md-2 wow fadeInRight animated" data-wow-delay=".6s">
-                <i class="fa fa-rocket iconfont"></i>
+                <i class="fas fa-grip-lines iconfont"></i>
           </div>     
         </div>
         <div class="row">            
          <div class="col-xs-10 col-sm-10 col-md-10 wow fadeInLeft animated textright" data-wow-delay=".7s">
-            <h3>Lorem ipsum</h3>
-              <p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum.</p>     
+            <h3>Networked Client API</h3>
+              <p>Communication between a central server and a client.</p>     
           </div>
           <div class="col-xs-2 col-sm-2 col-md-2 wow fadeInRight animated" data-wow-delay=".7s">
-                <i class="fa fa-film iconfont"></i>
+                <i class="fa fa-server iconfont"></i>
           </div>         
            
         </div>        
