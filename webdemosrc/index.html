@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+    <head><strong>CS 7345 Lab 2</strong>
+    </head>
+    <!--- Output from Emscripten/loading the library -->
+    <script src="/sorting_functions.js"></script>
+    <script src="/library.js"></script>
+    <script> 
+        var result = Module.onRuntimeInitialized = () => {
+            // Size Order is 10 --> 1,000 --> 10,000 --> 100,000
+            // Type Order is RSO --> Rand --> Dupes
+            // Algo Order is Bubble --> Merge --> Insertion
+
+            //creating initial vectors
+            document.write("<i>Creating Vectors:</i>");
+            document.write("<br>");
+            var arr10 = Algo.Vector.Init();
+            for (var i = 0; i < 10; i++) {
+                arr10.push_back(i+1);
+            }
+            var arr1000 = Algo.Vector.Init(1000);
+            var arr10000 = Algo.Vector.Init(10000);
+            var arr100000 = Algo.Vector.Init(100000);
+
+            //reverse order vectors
+            document.write("<i>Randomizing Vectors:</i>");
+            document.write("<br>");
+            console.log("Randomizing Vectors:");
+            var random10 = Algo.Vector.Shuffle(arr10);
+            var random1000 = Algo.Vector.Shuffle(arr1000);
+            var random10000 = Algo.Vector.Shuffle(arr10000);
+            var random100000 = Algo.Vector.Shuffle(arr100000);           
+
+            document.write("<i>Duping Vectors:</i>");
+            console.log("Duping Vectors:");
+            document.write("<br>");
+            var dupes10 = Algo.Vector.Dupe(arr10);
+            var dupes1000 = Algo.Vector.Dupe(arr1000);
+            var dupes10000 = Algo.Vector.Dupe(arr10000);
+            var dupes100000 = Algo.Vector.Dupe(arr100000);
+
+            document.write("<i>Reversing Vectors:</i>");
+            console.log("Reversing Vectors:");
+            document.write("<br>");
+            var reverse10 = Algo.Vector.Reverse(arr10);
+            var reverse1000 = Algo.Vector.Reverse(arr1000);
+            var reverse10000 = Algo.Vector.Reverse(arr10000);
+            var reverse100000 = Algo.Vector.Reverse(arr100000);
+
+            var totalTime = 0.0;
+            //BUBBLE SORT
+            document.write("<br> <strong>BUBBLE SORT:</strong> <br>");
+            document.write("Bubble on Random10:\n");
+            console.log("Bubble on Random10:");
+            document.write("<br>");
+            var t0 = performance.now();
+            var brand1 = Algo.Sort.Bubble(random10);
+            var t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Random1000:\n");
+            console.log("Bubble on Random1000:");
+            document.write("<br>");
+            t0 = performance.now();
+            var brand2 = Algo.Sort.Bubble(random1000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Random10000:\n");
+            console.log("Bubble on Random10000:");
+            document.write("<br>");
+            t0 = performance.now();
+            var brand3 = Algo.Sort.Bubble(random10000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Random100000:\n");
+            console.log("Bubble on Random100000:");
+            document.write("<br>");
+            t0 = performance.now();
+            var brand4 = Algo.Sort.Bubble(random100000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Reverse10:\n");
+            console.log("Bubble on Reverse10:");
+            document.write("<br>");
+            t0 = performance.now();
+            var brev1 = Algo.Sort.Bubble(reverse10);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Reverse1000:\n");
+            console.log("Bubble on Reverse1000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var brev2 = Algo.Sort.Bubble(reverse1000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Reverse10000:\n");
+            console.log("Bubble on Reverse10000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var brev3 = Algo.Sort.Bubble(reverse10000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Reverse100000:\n");
+            console.log("Bubble on Reverse100000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var brev4 = Algo.Sort.Bubble(reverse100000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Dupes10:\n");
+            console.log("Bubble on Dupes10:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var bd1 = Algo.Sort.Bubble(dupes10);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Dupes1000:\n");
+            console.log("Bubble on Dupes1000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var bd2 = Algo.Sort.Bubble(dupes1000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Dupes10000:\n");
+            console.log("Bubble on Dupes10000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var bd3 = Algo.Sort.Bubble(dupes10000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Bubble on Dupes100000:\n");
+            console.log("Bubble on Dupes100000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var bd4 = Algo.Sort.Bubble(dupes100000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            //MERGE SORT
+            document.write("<br> <strong>MERGE SORT:</strong> <br>");
+            document.write("Merge on Random10:\n");
+            console.log("Merge on Random10:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var mrand1 = Algo.Sort.Merge(random10);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Random1000:\n");
+            console.log("Merge on Random1000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var mrand2 = Algo.Sort.Merge(random1000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Random10000:\n");
+            console.log("Merge on Random10000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var mrand3 = Algo.Sort.Merge(random10000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Random100000:\n");
+            console.log("Merge on Random100000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var mrand4 = Algo.Sort.Merge(random100000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Reverse10:\n");
+            console.log("Merge on Reverse10:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var mrev1 = Algo.Sort.Merge(reverse10);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Reverse1000:\n");
+            console.log("Merge on Reverse1000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var mrev2 = Algo.Sort.Merge(reverse1000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Reverse10000:\n");
+            console.log("Merge on Reverse10000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var mrev3 = Algo.Sort.Merge(reverse10000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Reverse100000:\n");
+            console.log("Merge on Reverse100000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var mrev4 = Algo.Sort.Merge(reverse100000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Dupes10:\n");
+            console.log("Merge on Dupes10:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var md1 = Algo.Sort.Merge(dupes10);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Dupes1000:\n");
+            console.log("Merge on Dupes1000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var md2 = Algo.Sort.Merge(dupes1000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Dupes10000:\n");
+            console.log("Merge on Dupes10000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var md3 = Algo.Sort.Merge(dupes10000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Merge on Dupes100000:\n");
+            console.log("Merge on Dupes100000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var md4 = Algo.Sort.Merge(dupes100000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            //INSERTION SORT
+            document.write("<br> <strong>INSERTION SORT:</strong> <br>");
+            document.write("Insertion on Random10:\n");
+            console.log("Insertion on Random10:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var irand1 = Algo.Sort.Insertion(random10);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Random1000:\n");
+            console.log("Insertion on Random1000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var irand2 = Algo.Sort.Insertion(random1000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Random10000:\n");
+            console.log("Insertion on Random10000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var irand3 = Algo.Sort.Insertion(random10000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Random100000:\n");
+            console.log("Insertion on Random100000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var irand4 = Algo.Sort.Insertion(random100000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Reverse10:\n");
+            console.log("Insertion on Reverse10:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var irev1 = Algo.Sort.Insertion(reverse10);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Reverse1000:\n");
+            console.log("Insertion on Reverse1000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var irev2 = Algo.Sort.Insertion(reverse1000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Reverse10000:\n");
+            console.log("Insertion on Reverse10000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var irev3 = Algo.Sort.Insertion(reverse10000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Reverse100000:\n");
+            console.log("Insertion on Reverse100000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var irev4 = Algo.Sort.Insertion(reverse100000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Dupes10:\n");
+            console.log("Insertion on Dupes10:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var id1 = Algo.Sort.Insertion(dupes10);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Dupes1000:\n");
+            console.log("Insertion on Dupes1000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var id2 = Algo.Sort.Insertion(dupes1000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Dupes10000:\n");
+            console.log("Insertion on Dupes10000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var id3 = Algo.Sort.Insertion(dupes10000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("Insertion on Dupes100000:\n");
+            console.log("Insertion on Dupes100000:\n");
+            document.write("<br>");
+            t0 = performance.now();
+            var id3 = Algo.Sort.Insertion(dupes100000);
+            t1 = performance.now();
+            document.write("Seconds: " + (t1-t0)/1000 + "\n");
+            console.log("Seconds: " + (t1-t0)/1000);
+            document.write("<br>");
+            totalTime += (t1-t0);
+
+            document.write("<br> <strong>Total Time: </strong>" + (totalTime/1000) + "\n");
+            console.log("Total Time: " + (totalTime)/1000);
+            document.write("<br>");
+
+        }
+    </script>
+    <body>
+    </body>
+    <!--- Using the Library-->  
+</html>
